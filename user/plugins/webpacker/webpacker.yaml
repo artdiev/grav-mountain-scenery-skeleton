@@ -1,0 +1,24 @@
+enabled: true
+mode: production
+https: false
+ssl_certs: false
+open_website: true
+open_url: local
+dev_browser: os_default
+console_display:
+  error: true
+  warning: true
+overlay_display:
+  error: true
+  warning: true
+overlay_theme: dark
+open_browsersyncui: true
+open_bundleanalyzer: true
+os_notify: true
+os_notify_sound: true
+browsersync_notify: true
+manifest: true
+vendors: true
+commons: true
+dev_sourcemaps: cheap-module-eval-source-map
+prod_sourcemaps: (none)

@@ -1,0 +1,19 @@
+title: 'Chalet della Guida'
+default_lang: Spain
+author:
+  name: 'Silvia Borello'
+  email: ai.turdiev@gmail.com
+taxonomies:
+  - category
+  - type
+  - tag
+  - capacity
+metadata:
+  description: 'My Grav Site'
+summary:
+  enabled: true
+  format: short
+  size: 300
+  delimiter: '==='
+blog:
+  route: /blog

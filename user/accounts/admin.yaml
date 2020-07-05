@@ -1,0 +1,11 @@
+state: enabled
+email: c.r.o.n.e.x.m.c@gmail.com
+fullname: 'Artur Turdiev'
+title: Creator
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$10$0yKxZi04FiW/AIK5T1YFYe6e/OhLYXQihxZbMwIVlegi6Zw6ayXIq

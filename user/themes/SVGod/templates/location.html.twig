@@ -1,0 +1,40 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <main class="grid">
+    <article class="sb location">
+        {{ page.content }}
+   </article>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d27806.839752994023!2d6.719519035849911!3d45.10592339197135!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478994bad5eb4329%3A0x1ded6e14a1f1e4b6!2sChalet+della+Guida!5e1!3m2!1sru!2sus!4v1565780221289!5m2!1sru!2sus" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <article class="room-preview sb" itemscope itemtype="http://schema.org/{% for type in page.taxonomy.type %}{% if type  == 'suite' %}Suite{% else %}HotelRoom{% endif %}{% endfor %}" role="article">
+            <header class="row">
+                <h3 itemprop="name">Flora and Fauna</h3>
+                {% for type in page.taxonomy.type %}<span class="type">{{ type }}</span>
+                    {% if not loop.last %}, {% endif %}{% endfor %}
+                <svg height="1em" id="close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+                    <defs>
+                        <style>.cls-1 {
+                                fill: none;
+                                stroke: black;
+                                stroke-linecap: round;
+                                stroke-miterlimit: 10;
+                                stroke-width: 0.5em;
+                            }
+                        </style>
+                    </defs>
+                    <line class="cls-1" x1="4" y1="4" x2="85" y2="85"/>
+                    <line class="cls-1" x1="85" y1="4" x2="4" y2="85"/>
+                </svg>
+            </header>
+            <section class="carousel" itemprop="image">
+                {% for image in page.media.images %}
+                    {{ image.sizes('80vw').lightbox().html }}
+                {% endfor %}
+                <div style="padding: 0.01em"></div>
+            </section>
+            <footer>
+                <a class="read-more" href="{{ page.url }}"><h3>look</h3></a>
+            </footer>
+        </article>
+    </main>
+{% endblock %}

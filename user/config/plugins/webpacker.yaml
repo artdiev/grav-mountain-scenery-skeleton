@@ -1,0 +1,25 @@
+enabled: false
+mode: development
+https: false
+ssl_certs: false
+open_website: true
+open_url: local
+dev_browser: os_default
+console_display:
+  error: true
+  warning: true
+overlay_display:
+  error: false
+  warning: false
+overlay_theme: dark
+open_browsersyncui: false
+open_bundleanalyzer: false
+os_notify: false
+os_notify_sound: false
+browsersync_notify: true
+manifest: true
+vendors: true
+commons: true
+dev_sourcemaps: eval-source-map
+prod_sourcemaps: source-map
+proxy: localhost/chalet

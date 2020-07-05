@@ -1,0 +1,32 @@
+{% extends 'partials/base.html.twig' %}
+{% set collection = page.collection() %}
+{% block content %}
+    <main class="grid rooms" itemscope itemtype="http://schema.org/Accomodation">
+        <section id="filters" title="filters" class="sb filters">
+            <div class="indicator">
+            </div>
+            <button onclick="filterToggle('all')">
+                <h3>all</h3>
+            </button>
+            <button onclick="filterToggle('suite')">
+                <h3>suite</h3>
+            </button>
+            <button onclick="filterToggle('studio')">
+                <h3>studio</h3>
+            </button>
+            <button onclick="filterToggle('small')">
+                <h3>small</h3>
+                <p>1-3 people</p>
+            </button>
+            <button onclick="filterToggle('medium')">
+                <h3>medium</h3>
+                <p>4-6 people</p>
+            </button>
+            <button onclick="filterToggle('large')">
+                <h3>large</h3>
+                <p>7-8 people</p>
+            </button>
+        </section>
+        {% for post in collection %} {% include 'partials/room-preview.html.twig' %} {% endfor %}
+    </main>
+{% endblock %}

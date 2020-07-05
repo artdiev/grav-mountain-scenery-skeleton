@@ -1,0 +1,14 @@
+enabled: false
+active: true
+bgColor: '#1d2433'
+bgOpacity: 1
+closeOnWindowResize: true
+enableGrab: true
+preloadImage: false
+scaleBase: 1
+scaleExtra: 0.5
+scrollThreshold: 40
+transitionDuration: 0.4
+transitionTimingFunction: 'cubic-bezier(0.4, 0, 0, 1)'
+zIndex: 998
+initTemplate: 'plugin://zooming/js/zooming.init.js'
