@@ -1,6 +1,4 @@
-
 //lazy load
-
 const lazyload = window.lozad();
 lazyload.observe();
 
@@ -25,25 +23,31 @@ const toggleAnimation = (tween) => {
     tween.reversed() ? tween.play() : tween.reverse()
 };
 
-langBtn.addEventListener("click", () => {toggleAnimation(langAnimation)});
-
-
-
+langBtn.addEventListener("click", () => {
+    toggleAnimation(langAnimation)
+});
 
 
 if (document.getElementsByClassName('landing').length > 0) {
 
     let height = window.innerHeight;
     let width = window.innerWidth;
-    let tree = document.getElementById("treePath");
-    let sky = document.getElementById("sky");
+    const tree = document.getElementById("treePath");
+    const sky = document.getElementById("sky");
+    const snow = document.getElementById("snow");
 
-    const mainScene = gsap.timeline({ onComplete:function() {this.restart()}});
+    const mainScene = gsap.timeline({
+        onComplete: function () {
+            this.restart()
+        }
+    });
     mainScene
         .to(tree, 1, {rotation: -1}, "-=0")
         .to(tree, 1, {rotation: 1}, "-=0")
         .to(sky, 0.7, {y: -12}, "-=1")
         .to(sky, 0.5, {y: 0}, "-=0.3")
+        .to("#phone", 0.2, {fill: "black"}, "-=0")
+        .to("#phone", 0.2, {fill: "#FFF3FF"}, "-=0")
         .to("#windParticles", 3, {x: 800})
         .to(sky, 1.5, {y: -20}, "-=3")
         .to(sky, 1.5, {y: 0}, "-=1.5")
@@ -52,26 +56,28 @@ if (document.getElementsByClassName('landing').length > 0) {
         .to(tree, 0.5, {rotation: -2}, "-=1.2")
         .to(tree, 0.4, {rotation: 1}, "-=0.7")
         .to(tree, 0.3, {rotation: 0}, "-=0.3")
-        .to(["#mid_right", "#mid_left", "#far_right"], 0.7, {x: 5, }, "-=3")
-        .to(["#mid_right", "#mid_left", "#far_right"], 0.7, {x: 0, }, "-=1.5")
         .to(tree, 1, {rotation: -1}, "-=0")
         .to(tree, 1, {rotation: 0}, "-=0")
+        .to("#phone", 0.2, {fill: "black"}, "-=0.3")
+        .to("#phone", 0.2, {fill: "#FFF3FF"}, "-=0.1")
         .to(sky, 0.7, {y: -12}, "-=1")
         .to(sky, 0.5, {y: 0}, "-=0.3")
-        .to("#phone", 0.1, {fill: "black"}, "-=0")
-        .to("#phone", 0.1, {fill: "#FFF3FF"}, "-=0")
     ;
 
 
-    const snowScene = gsap.timeline({onComplete:function() {this.restart()}}).pause();
+    const snowScene = gsap.timeline({
+        onComplete: function () {
+            this.restart()
+        }
+    }).pause();
     snowScene.to("#moving-up", 5.5, {transform: "translate(65.8pt, -21.1pt)", ease: Power0.easeNone})
         .to("#moving-down", 5.5, {transform: "translate(-63.4pt, 20.6pt)", ease: Power0.easeNone}, "-=5.5");
 
 
     //Animate falling
     function snowingAnimation(element) {
-        gsap.to(element,{duration: "random(3,6.5)", y:height+10,ease:Linear.easeNone,repeat: -1});
-        gsap.to(element,{duration: "random(5,7)", x:'+=100',repeat: -1,yoyo:true,ease:Sine.easeInOut});
+        gsap.to(element, {duration: "random(3,6.5)", y: height + 10, ease: Linear.easeNone, repeat: -1});
+        gsap.to(element, {duration: "random(5,7)", x: '+=100', repeat: -1, yoyo: true, ease: Sine.easeInOut});
     };
 
 
@@ -85,58 +91,76 @@ if (document.getElementsByClassName('landing').length > 0) {
         // Generate snowflakes
         for (let i = 0; i < snowflakes; i++) {
             let snowflakeDiv = document.createElement('div');
-            gsap.set(snowflakeDiv, {attr: {class: "snow" + gsap.utils.random(["Small", "Medium", "Large"])}, x: gsap.utils.random(0, width), y: "random(-10, 0)" });
+            gsap.set(snowflakeDiv,
+                {
+                    attr:
+                        {
+                            class: "snow" + gsap.utils.random(["Small", "Medium", "Large"])
+                        },
+                    x: gsap.utils.random(0, width),
+                    y: "random(-10, 0)"
+                });
             fragment.appendChild(snowflakeDiv);
-            setTimeout(() => snowingAnimation(snowflakeDiv, true), i*50)
+            setTimeout(() => snowingAnimation(snowflakeDiv, true), i * 50)
         }
 
         return container.appendChild(fragment);
     }
 
+
     function RemoveChildrenFromDom() {
         console.log('snowflakes removed')
-        return document.getElementById("snow").innerHTML = "";
+        snow.innerHTML = "";
     }
 
     function removeSnowfall() {
-        if (document.getElementById("snow").children.length > 0) {
-            gsap.to(".snowSmall", {scale: 0.02, duration: 0.4});
-            gsap.to(".snowMedium", {scale: 0.02, duration: 0.8});
-            gsap.to(".snowLarge", {scale: 0.02, duration: 1.2, onComplete: RemoveChildrenFromDom});
-        } else return;
+        if (snow.children.length > 0) {
+            gsap.to(".snowSmall", {scale: 0.02, duration: 0.3});
+            gsap.to(".snowMedium", {scale: 0.02, duration: 0.6});
+            gsap.to(".snowLarge", {scale: 0.02, duration: 0.9, onComplete: RemoveChildrenFromDom});
+        }
     }
 
 
 //    Intersection Observer
-    const observedElements = document.querySelectorAll('#snowSports');
+    const snowSports = document.getElementById("snowSports");
     const observerOptions = {
         root: null,
         rootMargin: '0px 0px',
         threshold: 0
     };
-    observedElements.forEach(el => {
+    snowSports.observer = new IntersectionObserver(
+        entry => {
+            if (entry[0].intersectionRatio > 0) {
+                console.log("snowScene is intersecting");
+                mainScene.pause();
+                addSnowfall("snow", width / 25);
+                snowScene.play()
+            } else {
+                snowScene.pause();
+                console.log("snowScene not intersecting");
+                removeSnowfall();
+                setTimeout(() => mainScene.play(), 1200);
+            }
+        },
+        observerOptions
+    );
+    snowSports.observer.observe(snowSports);
 
-        el.observer = new IntersectionObserver(
-            entry => {
-                if (entry[0].intersectionRatio > 0) {
-                    console.log("is intersecting");
-                    addSnowfall("snow", width/15)
-                    mainScene.pause()
-                    snowScene.play()
-                } else {
-                    snowScene.pause()
-                    mainScene.play()
-                    console.log("not intersecting")
-                    removeSnowfall()
-                }
-            },
-            observerOptions
-        );
-
-        el.observer.observe(el);
-    });
-
-
+    const climbing = document.getElementById("climbing");
+    climbing.observer = new IntersectionObserver(
+        entry => {
+            if (entry[0].intersectionRatio > 0) {
+                console.log("climbing is intersecting");
+                mainScene.pause();
+            } else {
+                console.log("climbing not intersecting");
+                setTimeout(() => mainScene.play(), 1200);
+            }
+        },
+        observerOptions
+    );
+    climbing.observer.observe(climbing);
 
 
 
@@ -172,29 +196,30 @@ if (document.getElementById('filters')) {
 
     let filterTargets = document.querySelectorAll("#filters button");
     let indicator = document.getElementsByClassName("indicator");
-    gsap.set(indicator, {x:filterTargets[0].offsetLeft});
-    gsap.set(indicator, {y:filterTargets[0].offsetTop});
-    gsap.set(indicator, {width:filterTargets[0].offsetWidth});
-    gsap.set(indicator, {height:filterTargets[0].offsetHeight});
-    function filterSlider (input) {
+    gsap.set(indicator, {x: filterTargets[0].offsetLeft});
+    gsap.set(indicator, {y: filterTargets[0].offsetTop});
+    gsap.set(indicator, {width: filterTargets[0].offsetWidth});
+    gsap.set(indicator, {height: filterTargets[0].offsetHeight});
+
+    function filterSlider(input) {
         switch (input) {
             case 'all':
-                gsap.to(indicator, 0.3, {x:filterTargets[0].offsetLeft, y:filterTargets[0].offsetTop});
+                gsap.to(indicator, 0.3, {x: filterTargets[0].offsetLeft, y: filterTargets[0].offsetTop});
                 break;
             case 'suite':
-                gsap.to(indicator, 0.3, {x:filterTargets[1].offsetLeft, y:filterTargets[1].offsetTop});
+                gsap.to(indicator, 0.3, {x: filterTargets[1].offsetLeft, y: filterTargets[1].offsetTop});
                 break;
             case 'studio':
-                gsap.to(indicator, 0.3, {x:filterTargets[2].offsetLeft, y:filterTargets[2].offsetTop});
+                gsap.to(indicator, 0.3, {x: filterTargets[2].offsetLeft, y: filterTargets[2].offsetTop});
                 break;
             case 'small':
-                gsap.to(indicator, 0.3, {x:filterTargets[3].offsetLeft, y:filterTargets[3].offsetTop});
+                gsap.to(indicator, 0.3, {x: filterTargets[3].offsetLeft, y: filterTargets[3].offsetTop});
                 break;
             case 'medium':
-                gsap.to(indicator, 0.3, {x:filterTargets[4].offsetLeft, y:filterTargets[4].offsetTop});
+                gsap.to(indicator, 0.3, {x: filterTargets[4].offsetLeft, y: filterTargets[4].offsetTop});
                 break;
             case 'large':
-                gsap.to(indicator, 0.3, {x:filterTargets[5].offsetLeft, y:filterTargets[5].offsetTop});
+                gsap.to(indicator, 0.3, {x: filterTargets[5].offsetLeft, y: filterTargets[5].offsetTop});
                 break;
         }
     }
