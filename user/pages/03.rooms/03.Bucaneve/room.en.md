@@ -1,12 +1,17 @@
 ---
-title: Botton d'oro
-image: botton-doro-0002.jpg
+title: Bucaneve
+image: Bucaneve-0002.jpg
 taxonomy:
     category: rooms
     type: studio
-    capacity: 3
+    capacity: 4
+beds:
+    double: 1
+    single: 2
+    bunk: 1
+    sofa: 1
 ---
-![Living room](botton-doro-0002.jpg)
+![Living Room](Bucaneve-0002.jpg)
 
 Equipment
 fully equipped with kitchenware

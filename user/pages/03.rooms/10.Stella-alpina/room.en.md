@@ -1,12 +1,17 @@
 ---
-title: Genzianella
-image: Genzianella-0003.jpg
+title: Stella Alpina
+image: Stella-alpina-0003.jpg
 taxonomy:
     category: rooms
     type: suite
-    capacity: 6
+    capacity: 5
+beds:
+    double: 1
+    single: 2
+    bunk: 1
+    sofa: 1
 ---
-![Living Room](Genzianella-0003.jpg)
+
 Equipment
 fully equipped with kitchenware
 
@@ -75,6 +80,4 @@ Shuttle on request
 Hire on site MTB and snowshoes
 
 Possibility of transfers to and from the airport
-
- 
 

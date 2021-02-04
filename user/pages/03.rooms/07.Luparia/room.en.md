@@ -1,12 +1,17 @@
 ---
-title: Stella Alpina
-image: Stella-alpina-0003.jpg
+title: Luparia
+image: Luparia-0002.jpg
 taxonomy:
     category: rooms
-    type: suite
-    capacity: 5
+    type: studio
+    capacity: 4
+beds:
+    double: 1
+    single: 2
+    bunk: 1
+    sofa: 1
 ---
-
+![Living Room](Luparia-0002.jpg)
 Equipment
 fully equipped with kitchenware
 
@@ -76,4 +81,3 @@ Hire on site MTB and snowshoes
 
 Possibility of transfers to and from the airport
 
- 

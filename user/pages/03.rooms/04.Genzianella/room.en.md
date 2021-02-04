@@ -1,13 +1,17 @@
 ---
-title: Bucaneve
-image: Bucaneve-0002.jpg
+title: Genzianella
+image: Genzianella-0003.jpg
 taxonomy:
     category: rooms
-    type: studio
-    capacity: 4
+    type: suite
+    capacity: 6
+beds:
+    double: 1
+    single: 2
+    bunk: 1
+    sofa: 1
 ---
-![Living Room](Bucaneve-0002.jpg)
-
+![Living Room](Genzianella-0003.jpg)
 Equipment
 fully equipped with kitchenware
 
@@ -76,3 +80,6 @@ Shuttle on request
 Hire on site MTB and snowshoes
 
 Possibility of transfers to and from the airport
+
+ 
+

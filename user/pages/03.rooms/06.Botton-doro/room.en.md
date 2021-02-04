@@ -1,12 +1,18 @@
 ---
-title: Luparia
-image: Luparia-0002.jpg
+title: Botton d'oro
+image: botton-doro-0002.jpg
 taxonomy:
     category: rooms
     type: studio
-    capacity: 4
+    capacity: 3
+beds:
+    double: 1
+    single: 2
+    bunk: 1
+    sofa: 1
 ---
-![Living Room](Luparia-0002.jpg)
+![Living room](botton-doro-0002.jpg)
+
 Equipment
 fully equipped with kitchenware
 
@@ -75,5 +81,3 @@ Shuttle on request
 Hire on site MTB and snowshoes
 
 Possibility of transfers to and from the airport
-
- 

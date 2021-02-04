@@ -5,6 +5,11 @@ taxonomy:
     category: rooms
     type: studio
     capacity: 2
+beds:
+    double: 1
+    single: 2
+    bunk: 1
+    sofa: 1
 ---
   
 Equipment
@@ -76,4 +81,3 @@ Hire on site MTB and snowshoes
 
 Possibility of transfers to and from the airport
 
- 

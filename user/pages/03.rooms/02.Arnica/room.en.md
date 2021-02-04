@@ -1,12 +1,21 @@
 ---
-title: Giglio Rosso
-image: Giglio-rosso-0003.jpg
+title: Arnica
+image: Arnica-0001.jpg
 taxonomy:
     category: rooms
-    type: studio
-    capacity: 2
+    type: suite
+    capacity: 8
+beds:
+    double: 1
+    single: 2
+    bunk: 1
+    sofa: 1
 ---
-![Living Room](giglio-rosso-0003.jpg)
+
+![Living Room](Arnica-0001.jpg)
+Apartment accessible for the handicapped
+ 
+
 Equipment
 fully equipped with kitchenware
 

@@ -1,14 +1,17 @@
 ---
-title: Primula
-image: Primula-0004.jpg
+title: Giglio Rosso
+image: Giglio-rosso-0003.jpg
 taxonomy:
     category: rooms
     type: studio
-    capacity: 4
+    capacity: 2
+beds:
+    double: 1
+    single: 2
+    bunk: 1
+    sofa: 1
 ---
-
-![]()
-
+![Living Room](giglio-rosso-0003.jpg)
 Equipment
 fully equipped with kitchenware
 
@@ -77,5 +80,3 @@ Shuttle on request
 Hire on site MTB and snowshoes
 
 Possibility of transfers to and from the airport
-
- 
