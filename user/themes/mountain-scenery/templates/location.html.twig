@@ -1,0 +1,19 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <main class="grid">
+    <article class="location sb" itemscope itemtype="http://schema.org/{% for type in page.taxonomy.type %}{% if type  == 'suite' %}Suite{% else %}HotelRoom{% endif %}{% endfor %}" role="article">
+        <header class="row">
+            <h3 itemprop="name">Location</h3>
+            {% for type in page.taxonomy.type %}<span class="type">{{ type }}</span>
+                {% if not loop.last %}, {% endif %}{% endfor %}
+        </header>
+        <section class="carousel" itemprop="image">
+            {% for image in page.media.images %}
+                {{ image.sizes('70vw').lightbox().html }}
+            {% endfor %}
+        </section>
+        {{ page.content }}
+    </article>
+    </main>
+{% endblock %}

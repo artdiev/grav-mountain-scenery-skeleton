@@ -1,2 +1,8 @@
 # Project exclude paths
-/user/themes/SVGod/node_modules/
+/user/themes/mountain-scenery/node_modules/
+/tmp/
+/assets/
+/cache/
+/images/
+/logs/
+/cache/compiled/

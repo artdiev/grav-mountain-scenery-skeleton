@@ -1,0 +1,101 @@
+{% embed 'partials/base.html.twig' %}
+
+    {% block content %}
+        <main class="content" role="main">
+            <article class="room-preview sb" itemscope
+                     itemtype="http://schema.org/{% for type in page.taxonomy.type %}{% if type  == 'suite' %}Suite{% else %}HotelRoom{% endif %}{% endfor %}"
+                     role="article">
+                <section class="row sp-b">
+                    <span class="row">
+                        <h3 itemprop="name">{{ page.title }}</h3>
+                        {% for type in page.taxonomy.type %}<span class="type">{{ type }}</span>
+                            {% if not loop.last %}, {% endif %}{% endfor %}
+                    </span>
+                    <a href="./">
+                        <svg height="1em" id="close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+                            <defs>
+                                <style>.cls-1 {
+                                        fill: none;
+                                        stroke: black;
+                                        stroke-linecap: round;
+                                        stroke-miterlimit: 10;
+                                        stroke-width: 0.5em;
+                                    }
+                                </style>
+                            </defs>
+                            <line class="cls-1" x1="4" y1="4" x2="85" y2="85"/>
+                            <line class="cls-1" x1="85" y1="4" x2="4" y2="85"/>
+                        </svg>
+                    </a>
+                </section>
+                <section class="carousel" itemprop="image">
+                    {% for image in page.media.images %}
+                        {{ image.sizes('80vw').lightbox().html }}
+                    {% endfor %}
+                </section>
+                <section itemprop="description">
+                    <div class="capacity-title">
+                        <h4>
+                            Capacity: {{ page.header.taxonomy.capacity }}
+                            people
+                        </h4>
+                    </div>
+                    <div class="iconGrid">
+                        <p class="icon">{{ media['theme://images/rooms/bed.svg'] }} double bed</p>
+                        <h1>{{ page.header.beds.double }}</h1>
+                        <p class="icon">{{ media['theme://images/rooms/bed-single.svg'] }} single bed</p>
+                        <h1>{{ page.header.beds.single }}</h1>
+                        <p class="icon">{{ media['theme://images/rooms/bed-bunk.svg'] }} bunk bed</p>
+                        <h1>{{ page.header.beds.bunk }}</h1>
+                        <p class="icon">{{ media['theme://images/rooms/bed-sofa.svg'] }} sofa</p>
+                        <h1>{{ page.header.beds.sofa }}</h1>
+                    </div>
+                </section>
+                <section itemprop="description" class="room-description">
+                    <p>{{ media['theme://images/rooms/kitchen.svg'] }}
+                    Equipped Kitchen</p>
+                    <p>{{ media['theme://images/rooms/towel.svg'] }}
+                    Bed linen & towels</p>
+                    <p>{{ media['theme://images/rooms/tv.svg'] }}
+                    Satellite TV</p>
+                    <p>{{ media['theme://images/rooms/bathtub.svg'] }}
+                    Private bathroom with shower</p>
+                    <p>{{ media['theme://images/rooms/wifi.svg'] }}
+                    Free Wifi</p>
+                    <p>{{ media['theme://images/rooms/hair-dryer.svg'] }}
+                    Hairdryer</p>
+                    <p>{{ media['theme://images/rooms/ski.svg'] }}
+                    Skis and ski boots</p>
+                    <p>{{ media['theme://images/rooms/bike.svg'] }}
+                    MTB storage & pressure washer</p>
+                    <p>{{ media['theme://images/rooms/taxi.svg'] }}
+                    Transfer to & from Bardonecchia train station</p>
+                    <p>{{ media['theme://images/rooms/washing.svg'] }}
+                    Common Laundry room on request</p>
+
+                    <p>{{ media['theme://images/rooms/checkin.svg'] }}
+                    Check-in from 16.00 to 20.00</p>
+                    <p>{{ media['theme://images/rooms/checkin.svg'] }}
+                    Check-out by 10:00 am</p>
+                    <p>{{ media['theme://images/rooms/safe.svg'] }}
+                    300€ deposit on arrival</p>
+
+                    <p>{{ media['theme://images/rooms/towel.svg'] }}
+                    Extra bed-linen and towels</p>
+                    <p>{{ media['theme://images/rooms/bike.svg'] }}
+                    MTB rental</p>
+                    <p>{{ media['theme://images/rooms/taxi.svg'] }}
+                    Taxi Transfers</p>
+                    <p>{{ media['theme://images/rooms/washing.svg'] }}
+                    Local access for laundry use washing machine and dryer</p>
+                    <p>{{ media['theme://images/rooms/cleaning.svg'] }}
+                    Extra Cleaning</p>
+                </section>
+                <a class="read-more"
+                   href="https://secure.kosmosol.it/booking/v2/check-availability.php?h=chaletdellaguida-bardonecchia&l={{ html_lang }}"
+                   target="_blank" rel="noreferrer"
+                ><button><h3>Book ⤴</h3></button></a>
+            </article>
+        </main>
+    {% endblock %}
+{% endembed %}

@@ -28,7 +28,7 @@ home:
   alias: /home
   hide_in_urls: true
 pages:
-  theme: SVGod
+  theme: mountain-scenery
   order:
     by: default
     dir: asc

@@ -1,0 +1,32 @@
+<article class="room-preview sb" data-capacity="{{ post.header.taxonomy.capacity }}" data-type="{{ post.header.taxonomy.type }}"
+         itemscope itemtype="http://schema.org/{% if post.header.taxonomy.type  == 'suite' %}Suite{% else %}HotelRoom{% endif %}">
+    <section class="row">
+        <h3 itemprop="name"><a href="{{ post.url }}" itemprop="url">{{ post.title }}</a></h3>
+        <a class="type"
+           href="{{ page.url }}/type{{ config.system.param_sep }}{{ post.header.taxonomy.type }}">{{ post.header.taxonomy.type }}</a>
+    </section>
+    {% if post.header.image %}
+        <section class="carouselPreview">
+            <a href="{{ post.url }}"><img src="{{ post.media[post.header.image].url }}" alt=""></a>
+        </section>
+    {% endif %}
+    <section itemprop="description">
+        <div class="capacity-title">
+            <h4>
+                Capacity: {{ post.header.taxonomy.capacity }}
+                people
+            </h4>
+        </div>
+        <div class="iconGrid">
+            <p class="icon">{{ media['theme://images/rooms/bed.svg'] }} double bed</p>
+            <h1>{{ post.header.beds.double }}</h1>
+            <p class="icon">{{ media['theme://images/rooms/bed-single.svg'] }} single bed</p>
+            <h1>{{ post.header.beds.single }}</h1>
+            <p class="icon">{{ media['theme://images/rooms/bed-bunk.svg'] }} bunk bed</p>
+            <h1>{{ post.header.beds.bunk }}</h1>
+            <p class="icon">{{ media['theme://images/rooms/bed-sofa.svg'] }} sofa</p>
+            <h1>{{ post.header.beds.sofa }}</h1>
+        </div>
+    </section>
+    <a class="read-more" href="{{ post.url }}"><button><h3>look</h3></button></a>
+</article>

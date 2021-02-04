@@ -1,0 +1,9 @@
+enabled: true
+author: Artur Turdiev
+title_header: false
+home_profile: true
+infinite_scroll: true
+analytics: UA-YOURCODE
+social:
+    facebook: artur-turdiev
+

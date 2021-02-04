@@ -1,5 +1,5 @@
 title: 'Chalet della Guida'
-default_lang: Spain
+default_lang: English
 author:
   name: 'Silvia Borello'
   email: ai.turdiev@gmail.com
@@ -15,5 +15,7 @@ summary:
   format: short
   size: 300
   delimiter: '==='
+redirects: null
+routes: null
 blog:
   route: /blog
