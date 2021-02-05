@@ -1,3 +1,10 @@
+# [Demo](https://www.turdiev.trade/)
+A grav CMS skeleton / theme designed to be used for building a 
+
+# Status: alpha
+This not production ready, has bugs, and is in development.
+Not available in gpm
+
 # ![](https://avatars1.githubusercontent.com/u/8237355?v=2&s=50) Grav
 
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
@@ -26,32 +33,12 @@ The underlying architecture of Grav is designed to use well-established and _bes
 
 # QuickStart
 
-These are the options to get Grav:
-
-### Downloading a Grav Package
-
-You can download a **ready-built** package from the [Downloads page on https://getgrav.org](https://getgrav.org/downloads)
-
-### With Composer
-
-You can create a new project with the latest **stable** Grav release with the following command:
-
-```
-$ composer create-project getgrav/grav ~/webroot/grav
-```
-
 ### From GitHub
 
-1. Clone the Grav repository from [https://github.com/getgrav/grav]() to a folder in the webroot of your server, e.g. `~/webroot/grav`. Launch a **terminal** or **console** and navigate to the webroot folder:
+1. Clone the Grav repository from to a folder in the webroot of your server, e.g. `~/webroot/grav`. Launch a **terminal** or **console** and navigate to the webroot folder:
    ```
    $ cd ~/webroot
    $ git clone https://github.com/getgrav/grav.git
-   ```
-
-2. Install the **plugin** and **theme dependencies** by using the [Grav CLI application](https://learn.getgrav.org/advanced/grav-cli) `bin/grav`:
-   ```
-   $ cd ~/webroot/grav
-   $ bin/grav install
    ```
 
 Check out the [install procedures](https://learn.getgrav.org/basics/installation) for more information.
