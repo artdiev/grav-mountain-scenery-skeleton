@@ -1,7 +1,5 @@
-# [Demo](https://www.turdiev.trade/)
-A grav CMS skeleton / theme designed to be used for building a 
-
-# Status: alpha
+# [Demo link](https://www.turdiev.trade/)
+## Status: alpha
 This not production ready, has bugs, and is in development.
 Not available in gpm
 
