@@ -1,3 +1,8 @@
+# [Demo link](https://www.turdiev.trade/)
+## Status: alpha
+This not production ready, has bugs, and is in development.
+Not available in gpm
+
 # ![](https://avatars1.githubusercontent.com/u/8237355?v=2&s=50) Grav
 
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
@@ -26,32 +31,12 @@ The underlying architecture of Grav is designed to use well-established and _bes
 
 # QuickStart
 
-These are the options to get Grav:
-
-### Downloading a Grav Package
-
-You can download a **ready-built** package from the [Downloads page on https://getgrav.org](https://getgrav.org/downloads)
-
-### With Composer
-
-You can create a new project with the latest **stable** Grav release with the following command:
-
-```
-$ composer create-project getgrav/grav ~/webroot/grav
-```
-
 ### From GitHub
 
-1. Clone the Grav repository from [https://github.com/getgrav/grav]() to a folder in the webroot of your server, e.g. `~/webroot/grav`. Launch a **terminal** or **console** and navigate to the webroot folder:
+1. Clone the Grav repository from to a folder in the webroot of your server, e.g. `~/webroot/grav`. Launch a **terminal** or **console** and navigate to the webroot folder:
    ```
    $ cd ~/webroot
    $ git clone https://github.com/getgrav/grav.git
-   ```
-
-2. Install the **plugin** and **theme dependencies** by using the [Grav CLI application](https://learn.getgrav.org/advanced/grav-cli) `bin/grav`:
-   ```
-   $ cd ~/webroot/grav
-   $ bin/grav install
    ```
 
 Check out the [install procedures](https://learn.getgrav.org/basics/installation) for more information.
@@ -70,23 +55,6 @@ This will display all the available plugins and then you can install one or more
 $ bin/gpm install <plugin/theme>
 ```
 
-# Updating
-
-To update Grav you should use the [Grav Package Manager](https://learn.getgrav.org/advanced/grav-gpm) or `GPM`:
-
-```
-$ bin/gpm selfupgrade
-```
-
-To update plugins and themes:
-
-```
-$ bin/gpm update
-```
-
-
-# Contributing
-We appreciate any contribution to Grav, whether it is related to bugs, grammar, or simply a suggestion or improvement! Please refer to the [Contributing guide](CONTRIBUTING.md) for more guidance on this topic.
 
 ## Security issues
 If you discover a possible security issue related to Grav or one of its plugins, please email the core team at contact@getgrav.org and we'll address it as soon as possible.
@@ -102,21 +70,11 @@ If you discover a possible security issue related to Grav or one of its plugins,
 
 # Exploring More
 
-* Have a look at our [Basic Tutorial](https://learn.getgrav.org/basics/basic-tutorial)
+* Have a look at [Basic Tutorial](https://learn.getgrav.org/basics/basic-tutorial)
 * Dive into more [advanced](https://learn.getgrav.org/advanced) functions
 * Learn about the [Grav CLI](https://learn.getgrav.org/cli-console/grav-cli)
 * Review examples in the [Grav Cookbook](https://learn.getgrav.org/cookbook)
 * More [Awesome Grav Stuff](https://github.com/getgrav/awesome-grav)
-
-# Backers
-Support Grav with a monthly donation to help us continue development. [[Become a backer](https://opencollective.com/grav#backer)]
-
-<img src="https://opencollective.com/grav/tiers/backers.svg?avatarHeight=36&width=600" />
-
-# Sponsors
-Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/grav#sponsor)]
-
-<img src="https://opencollective.com/grav/tiers/sponsors.svg?avatarHeight=36&width=600" />
 
 # License
 
