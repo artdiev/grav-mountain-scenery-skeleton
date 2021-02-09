@@ -5,8 +5,9 @@
     margin: 0;
 }
 
-button:focus, button:active {
-    outline-style: none;
+:focus, button:focus {
+    outline: solid 0.1em #34DBB9;
+    outline-offset: 3px;
 }
 
 button {
@@ -86,10 +87,6 @@ a {
     margin: 1.4em 0;
 }
 
-.iconGrid p {
-    font-size: 0.7em;
-}
-
 .grid .trigger {
     margin-top: 60vh;
 }
@@ -136,6 +133,28 @@ a {
     width: 12px;
     height: 12px;
 }
+
+.st{fill:#fff}
+.st0{fill:#23477c}
+.st1{opacity:0.22;fill:#0D2133;}
+.st2{fill:#FFF3FF;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+.st3{fill:#FFCCBC;}
+.st4{fill:#263238;}
+.st5{fill:#FFF3FF;}
+.st6{fill:#EF5350;}
+.st7{fill:#0D2133;}
+.st8{fill:#2A3C4F;}
+.st9{fill:#B2B2B2;}
+.st10{fill:#919191;}
+.st11{fill:#141414;}
+.st12{fill:#0DACD1;}
+.st13{fill:#312E54;}
+.st14{fill:#BF360C;}
+.st15{fill:#222B2B;}
+.st16{fill:#677575;}
+.st17{fill:none;stroke:#F9F9F9;stroke-miterlimit:10;}
+.st20{mask:url(#windMask);}
+
 
 .sp7 {
     grid-column: span 7;
@@ -233,11 +252,6 @@ main {
     justify-content: space-around;
 }
 
-.icon {
-    line-height: 0.9;
-    max-width: 4em;
-}
-
 .icon img {
     box-shadow: none;
     max-width: 3em;
@@ -262,6 +276,8 @@ main {
 .logo {
     grid-column: span 2;
     line-height: 0.9;
+    padding: 0.1em 0.4em;
+    justify-self: start;
 }
 
 .logo a {
@@ -269,12 +285,12 @@ main {
     color: white;
 }
 
-nav {
-    grid-column: span 8;
+#lang {
+    place-self: end;
 }
 
-nav .menu {
-    justify-content: space-between;
+nav {
+    grid-column: span 8;
 }
 
 nav a {
@@ -291,10 +307,10 @@ nav a {
     text-align: center;
     text-transform: uppercase;
     list-style: none;
+    place-content: center;
 }
 
-.menu li {
-    text-decoration: none;
+.menu a {
     padding: 0.1em 0.4em;
 }
 
@@ -335,6 +351,10 @@ nav a {
     color: black;
     padding: 0.5em 1em;
     display: block;
+}
+
+.langList :focus, .langList :active {
+    outline: none;
 }
 
 footer {
@@ -446,7 +466,7 @@ footer .sp12 {
     position: relative;
     justify-self: stretch;
     grid-column: span 12;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     display: grid;
     justify-items: stretch;
     align-items: center;
@@ -504,8 +524,8 @@ button {
 
 .current {
     border-radius: 1.5rem;
-    border: 0.1em solid;
-    padding: 0 0.5em;
+    background: #34dbb9;
+    color: black;
 }
 
 .row {
@@ -528,24 +548,35 @@ button {
     border-radius: 1.5rem;
     top: 0;
     left: 0;
+    width: 19%;
+    height: 100%;
 }
 
 @media (max-width: 40em) {
-    .menu {
-        height: 3rem;
-        background: #0B61A4;
-        width: 100%;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
+    /*.menu {*/
+    /*    height: 3rem;*/
+    /*    background: #0B61A4;*/
+    /*    width: 100%;*/
+    /*    position: fixed;*/
+    /*    bottom: 0;*/
+    /*    left: 0;*/
+    /*    display: flex;*/
+    /*    flex-direction: row;*/
+    /*    flex-wrap: nowrap;*/
+    /*}*/
+
+    /*.menu li {*/
+    /*    flex: 1;*/
+    /*    place-self: center;*/
+    /*}*/
+
+    .filters {
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    .menu li {
-        flex: 1;
-        place-self: center;
+    .indicator {
+        height: 55%;
+        width: 33%;
     }
 
 }
@@ -584,14 +615,6 @@ button {
         margin: 0 4% 0 4%;
     }
 
-    .iconGrid p {
-        font-size: 1em;
-    }
-
-    .filters {
-        grid-template-columns: repeat(6, 1fr);
-    }
-
     .trigger {
         max-width: 50%;
     }
@@ -608,10 +631,6 @@ button {
 
     nav {
         grid-column: span 8;
-    }
-
-    .menu {
-        justify-content: flex-end;
     }
 
     #lang {
@@ -634,16 +653,8 @@ button {
         margin: 0 10% 0 10%;
     }
 
-    .iconGrid p {
-        font-size: 1em;
-    }
-
     .carousel a {
         width: 45%;
-    }
-
-    .filters {
-        grid-template-columns: repeat(6, 1fr);
     }
 
     .trigger {

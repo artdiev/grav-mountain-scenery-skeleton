@@ -1,19 +1,15 @@
 <div class="logo">
     <a href="{{ base_url }}" rel="home"><i>Your Logo</i></a>
 </div>
-<nav>
-    <ul class="menu">
-        {% for page in pages.children.visible %}
-            {% set current_page = (page.active or page.activeChild) ? 'class="current"' : '' %}
-            <li><a {{ current_page }} href="{{ page.url }}">{{ page.menu }}</a></li>
-        {% endfor %}
-        <li>
-            <a href="https://secure.kosmosol.it/booking/v2/check-availability.php?h=chaletdellaguida-bardonecchia&l={{ html_lang }}"
-               target="_blank" rel="noreferrer">Booking ⤴</a></li>
-        <li>
-            <a href="https://github.com/artdiev/grav-mountain-scenery-skeleton"
-               target="_blank" rel="noreferrer">GitHub ⤴</a></li>
-    </ul>
+<nav class="menu">
+    {% for page in pages.children.visible %}
+        {% set current_page = (page.active or page.activeChild) ? 'class="current"' : '' %}
+        <a {{ current_page }} href="{{ page.url }}">{{ page.menu }}</a>
+    {% endfor %}
+    <a href="https://secure.kosmosol.it/booking/v2/check-availability.php?h=chaletdellaguida-bardonecchia&l={{ html_lang }}"
+       target="_blank" rel="noreferrer">Booking ⤴</a>
+    <a href="https://github.com/artdiev/grav-mountain-scenery-skeleton"
+       target="_blank" rel="noreferrer">GitHub ⤴</a>
 </nav>
 <section id="lang">
     <button title="Language Selection" id="langBtn">
@@ -22,7 +18,8 @@
                   d="M64.2,14.4H21.4A21.4,21.4,0,0,0,0,35.8V78.6A21.4,21.4,0,0,0,21.4,100H64.2A21.4,21.4,0,0,0,85.6,78.6V35.8A21.4,21.4,0,0,0,64.2,14.4ZM74.9,76.8A12.5,12.5,0,0,1,62.4,89.3H23.2A12.5,12.5,0,0,1,10.7,76.8V37.6A12.5,12.5,0,0,1,23.2,25.1H62.4A12.5,12.5,0,0,1,74.9,37.6Z"/>
             <path class="st"
                   d="M81.7,0H45A18.1,18.1,0,0,0,29.2,9.2H75C83,9.2,90.8,17,90.8,25V70.8A18.1,18.1,0,0,0,100,55V18.3A18.3,18.3,0,0,0,81.7,0Z"/>
-            <text class="st" style="font-size: 2.3rem; text-transform: uppercase;" transform="translate(17.5 70.8) scale(0.95 1)">{{ html_lang }}</text>
+            <text class="st" style="font-size: 2.3rem; text-transform: uppercase;"
+                  transform="translate(17.5 70.8) scale(0.95 1)">{{ html_lang }}</text>
         </svg>
     </button>
     {% include 'partials/langswitcher.html.twig' %}

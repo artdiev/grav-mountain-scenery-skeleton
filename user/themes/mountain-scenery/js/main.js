@@ -1,34 +1,32 @@
-//lazy load
-const lazyload = window.lozad();
-lazyload.observe();
+const lazy = window.lozad();
+lazy.observe();
 
-//language switcher
-const LangBtn = document.getElementById('langBtn');
-const langAnimation = gsap.timeline({paused: true, reversed: true});
+const initLangSwitcher = () => {
+    const langBtn = document.getElementById('langBtn');
 
-// initial state: closed
-langAnimation.fromTo(
-    ".langList", 0.15, {
-        opacity: 0,
-        transform: "translate(1em, -2em) scale(0.8)",
-    }, {
-        opacity: 1,
-        transform: "translate(0, 0) scale(1)",
-        pointerEvents: "auto"
-    }
-);
+    const langAnimation = gsap.timeline({paused: true, reversed: true});
 
-// if closed: open, if open: close
-const toggleAnimation = (tween) => {
-    tween.reversed() ? tween.play() : tween.reverse()
+    langAnimation.fromTo(
+        ".langList", 0.15, {
+            opacity: 0,
+            transform: "translate(1em, -2em) scale(0.8)",
+        }, {
+            opacity: 1,
+            transform: "translate(0, 0) scale(1)",
+            pointerEvents: "auto"
+        }
+    );
+
+    const toggleAnimation = (tween) => {
+        tween.reversed() ? tween.play() : tween.reverse()
+    };
+
+    langBtn.addEventListener("click", () => {
+        toggleAnimation(langAnimation)
+    });
 };
 
-langBtn.addEventListener("click", () => {
-    toggleAnimation(langAnimation)
-});
-
-
-if (document.getElementsByClassName('landing').length > 0) {
+const initLanding = () => {
     let height = window.innerHeight;
     let width = window.innerWidth;
     const tree = document.getElementById("treePath");
@@ -43,13 +41,9 @@ if (document.getElementsByClassName('landing').length > 0) {
     mainScene
         .to(tree, 1, {rotation: -1}, "-=0")
         .to(tree, 1, {rotation: 1}, "-=0")
-        .to(sky, 0.7, {y: -12}, "-=1")
-        .to(sky, 0.5, {y: 0}, "-=0.3")
         .to("#phone", 0.2, {fill: "black"}, "-=0")
         .to("#phone", 0.2, {fill: "#FFF3FF"}, "-=0")
         .to("#windParticles", 3, {x: 800})
-        .to(sky, 1.5, {y: -20}, "-=3")
-        .to(sky, 1.5, {y: 0}, "-=1.5")
         .to(tree, 1, {rotation: -4}, "-=2.8")
         .to(tree, 0.5, {rotation: 2}, "-=1.7")
         .to(tree, 0.5, {rotation: -2}, "-=1.2")
@@ -59,8 +53,6 @@ if (document.getElementsByClassName('landing').length > 0) {
         .to(tree, 1, {rotation: 0}, "-=0")
         .to("#phone", 0.2, {fill: "black"}, "-=0.3")
         .to("#phone", 0.2, {fill: "#FFF3FF"}, "-=0.1")
-        .to(sky, 0.7, {y: -12}, "-=1")
-        .to(sky, 0.5, {y: 0}, "-=0.3")
     ;
 
 
@@ -108,7 +100,6 @@ if (document.getElementsByClassName('landing').length > 0) {
 
 
     function RemoveChildrenFromDom() {
-        console.log('snowflakes removed')
         snow.innerHTML = "";
     }
 
@@ -120,8 +111,6 @@ if (document.getElementsByClassName('landing').length > 0) {
         }
     }
 
-
-//    Intersection Observer
     const snowSports = document.getElementById("snowSports");
     const observerOptions = {
         root: null,
@@ -160,103 +149,79 @@ if (document.getElementsByClassName('landing').length > 0) {
         observerOptions
     );
     climbing.observer.observe(climbing);
-}
+};
 
-if (document.getElementById('filters')) {
+const initFilters = () => {
     const rooms = document.getElementsByClassName('room-preview');
-    let filter = 'all';
 
-    function filterToggle(input) {
-        filter = input;
-        filterSlider(input);
-        filterRooms(filter)
-    }
+    const filterRooms = (e) => {
+        if (e.target.closest('button')) {
+            console.log(e);
+            const target = e.target.closest('button');
+            const filter = target.dataset.filter;
+            gsap.to(indicator, 0.3, {
+                x: target.offsetLeft,
+                y: target.offsetTop,
+                width: target.offsetWidth,
+                height: target.offsetHeight
+            });
 
-// create room animations
-    let roomAnim = [];
-    for (let room of rooms) {
-        let anim = gsap.timeline({paused: true, reversed: true});
-        anim.fromTo(
-            room, 0.4, {
-                display: 'unset',
-                opacity: 1,
-                transform: "translate(0, 0)"
-            }, {
-                display: 'none',
-                opacity: 0.5,
-                transform: "translate(0, -0em)",
+            for (let room of rooms) {
+                switch (filter) {
+                    case 'all':
+                        room.style.display = 'unset';
+                        break;
+                    case 'suite':
+                        if (room.dataset.type !== 'suite') {
+                            room.style.display = 'none'
+                        } else {
+                            room.style.display = 'unset'
+                        }
+                        break;
+                    case 'studio':
+                        if (room.dataset.type !== 'studio') {
+                            room.style.display = 'none'
+                        } else {
+                            room.style.display = 'unset'
+                        }
+                        break;
+                    case 'small':
+                        if (room.dataset.capacity > 3) {
+                            room.style.display = 'none'
+                        } else {
+                            room.style.display = 'unset'
+                        }
+                        break;
+                    case 'medium':
+                        if (room.dataset.capacity < 4 || room.dataset.capacity > 6) {
+                            room.style.display = 'none'
+                        } else {
+                            room.style.display = 'unset'
+                        }
+                        break;
+                    case 'large':
+                        if (room.dataset.capacity < 7) {
+                            room.style.display = 'none'
+                        } else {
+                            room.style.display = 'unset'
+                        }
+                        break;
+                }
             }
-        );
-        roomAnim.push(anim);
-    }
+        }
+    };
 
-    let filterTargets = document.querySelectorAll("#filters button");
+    let filters = document.getElementById("filters");
     let indicator = document.getElementsByClassName("indicator");
-    gsap.set(indicator, {x: filterTargets[0].offsetLeft});
-    gsap.set(indicator, {y: filterTargets[0].offsetTop});
-    gsap.set(indicator, {width: filterTargets[0].offsetWidth});
-    gsap.set(indicator, {height: filterTargets[0].offsetHeight});
+    filters.addEventListener('click', filterRooms);
+};
 
-    function filterSlider(input) {
-        switch (input) {
-            case 'all':
-                gsap.to(indicator, 0.3, {x: filterTargets[0].offsetLeft, y: filterTargets[0].offsetTop});
-                break;
-            case 'suite':
-                gsap.to(indicator, 0.3, {x: filterTargets[1].offsetLeft, y: filterTargets[1].offsetTop});
-                break;
-            case 'studio':
-                gsap.to(indicator, 0.3, {x: filterTargets[2].offsetLeft, y: filterTargets[2].offsetTop});
-                break;
-            case 'small':
-                gsap.to(indicator, 0.3, {x: filterTargets[3].offsetLeft, y: filterTargets[3].offsetTop});
-                break;
-            case 'medium':
-                gsap.to(indicator, 0.3, {x: filterTargets[4].offsetLeft, y: filterTargets[4].offsetTop});
-                break;
-            case 'large':
-                gsap.to(indicator, 0.3, {x: filterTargets[5].offsetLeft, y: filterTargets[5].offsetTop});
-                break;
-        }
+window.onload = () => {
+    initLangSwitcher();
+    if (document.getElementsByClassName('landing').length > 0) {
+        initLanding();
     }
-
-    function filterRooms(filter) {
-        let count = 0;
-        for (let room of rooms) {
-            roomAnim[count].reversed() ? console.log('visible already') : toggleAnimation(roomAnim[count]);
-            switch (filter) {
-                case 'suite':
-                    if (room.dataset.type !== 'suite') {
-                        console.log('filtering suite');
-                        roomAnim[count].reversed() ? toggleAnimation(roomAnim[count]) : console.log('hidden already');
-                    }
-                    break;
-                case 'studio':
-                    if (room.dataset.type !== 'studio') {
-                        console.log('filtering studio');
-                        roomAnim[count].reversed() ? toggleAnimation(roomAnim[count]) : console.log('hidden already');
-                    }
-                    break;
-                case 'small':
-                    if (room.dataset.capacity > 3) {
-                        console.log('filtering small');
-                        roomAnim[count].reversed() ? toggleAnimation(roomAnim[count]) : console.log('hidden already');
-                    }
-                    break;
-                case 'medium':
-                    if (room.dataset.capacity < 4 || room.dataset.capacity > 6) {
-                        console.log('filtering medium');
-                        roomAnim[count].reversed() ? toggleAnimation(roomAnim[count]) : console.log('hidden already');
-                    }
-                    break;
-                case 'large':
-                    if (room.dataset.capacity < 7) {
-                        console.log('filtering large');
-                        roomAnim[count].reversed() ? toggleAnimation(roomAnim[count]) : console.log('hidden already');
-                    }
-                    break;
-            }
-            count++;
-        }
+    if (document.getElementById('filters')) {
+        initFilters();
     }
-}
+};
