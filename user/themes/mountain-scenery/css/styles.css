@@ -105,13 +105,15 @@ a {
     padding-top: 1%;
 }
 
-.snowTransition {
-    background: linear-gradient(to top, #1e297600 0%, rgb(30, 41, 118) 9.2%, rgb(30, 43, 120) 17.7%, rgba(30, 44, 121, 0.897) 25.5%, rgba(30, 46, 123, 0.826) 32.7%, rgba(31, 49, 126, 0.743) 39.5%, rgba(31, 51, 129, 0.652) 45.9%, rgba(31, 54, 131, 0.554) 51.9%, rgba(31, 56, 134, 0.456) 57.8%, rgba(31, 58, 137, 0.358) 63.5%, rgba(31, 61, 139, 0.267) 69.2%, rgba(32, 62, 141, 0.184) 74.9%, rgba(32, 64, 143, 0.113) 80.8%, rgba(32, 65, 145, 0.058) 86.8%, rgba(32, 66, 146, 0.023) 93.2%, rgba(32, 66, 146, 0.01) 100%);
+.transition {
     height: 50vh;
     width: 100vw;
     padding: 0;
     margin: 0;
-    margin-bottom: -4rem;
+    background: rgba(151, 180, 202, 0.0);
+    background: -webkit-linear-gradient(top, rgba(151, 180, 202, 0.0), rgba(0, 52, 112, 1.0));
+    background: -moz-linear-gradient(top, rgba(151, 180, 202, 0.0), rgba(0, 52, 112, 1.0));
+    background: linear-gradient(to bottom, rgba(151, 180, 202, 0.0), rgba(0, 52, 112, 1.0));
 }
 
 .snowSmall,
@@ -386,7 +388,6 @@ footer .sp12 {
 }
 
 .scene {
-    will-change: transform;
     width: 100vw;
     height: 100vh;
     position: sticky;
