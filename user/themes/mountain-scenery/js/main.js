@@ -2,10 +2,7 @@ const lazy = window.lozad();
 lazy.observe();
 
 const initLangSwitcher = () => {
-    const langBtn = document.getElementById('langBtn');
-
     const langAnimation = gsap.timeline({paused: true, reversed: true});
-
     langAnimation.fromTo(
         ".langList", 0.15, {
             opacity: 0,
@@ -17,13 +14,26 @@ const initLangSwitcher = () => {
         }
     );
 
-    const toggleAnimation = (tween) => {
-        tween.reversed() ? tween.play() : tween.reverse()
+    const closeModal = (e) => {
+        console.log('close', e);
+        if (e.type === 'click') {
+            if (e.target.closest('section')?.id === 'lang') {
+                return;
+            }
+        }
+        langAnimation.reverse();
+        window.removeEventListener('scroll', closeModal);
+        window.removeEventListener('click', closeModal);
     };
 
-    langBtn.addEventListener("click", () => {
-        toggleAnimation(langAnimation)
-    });
+    const openModal = (e) => {
+        langAnimation.play();
+        window.addEventListener('scroll', closeModal);
+        window.addEventListener('click', closeModal);
+    };
+
+    const langBtn = document.getElementById('langBtn');
+    langBtn.addEventListener("click", openModal);
 };
 
 const initLanding = () => {

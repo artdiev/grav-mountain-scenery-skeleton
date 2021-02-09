@@ -334,8 +334,6 @@ nav a {
     list-style: none;
     border-radius: 1.5rem;
     pointer-events: none;
-    -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
     opacity: 0;
 }
